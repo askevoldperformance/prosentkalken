@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Prosentkalken – Gratis prosentkalkulator</title>
+  <meta name="description" content="Beregn prosent, prosentandel, prosentøkning og prosentnedgang. Gratis og rask prosentkalkulator med formler og eksempler.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://prosentkalken.no">
+  <meta property="og:title" content="Prosentkalken – Gratis prosentkalkulator">
+  <meta property="og:description" content="Beregn prosent, prosentandel, prosentøkning og prosentnedgang. Gratis og rask prosentkalkulator med formler og eksempler.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prosentkalken.no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Prosentkalken","description":"Gratis prosentkalkulator for hverdagen","url":"https://prosentkalken.no","applicationCategory":"UtilityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"NOK"}}</script>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#1E1B4B; --bg2:#252260; --bg3:#2D2975;
+  --card:#262350; --card2:#2E2A6A;
+  --accent:#F59E0B; --accent-h:#D97706; --accent-s:rgba(245,158,11,0.15);
+  --text:#F0F4FA; --text-m:#94A3B8; --text-s:#64748B;
+  --border:rgba(255,255,255,0.08); --border-a:rgba(245,158,11,0.4);
+  --radius:12px; --radius-s:8px; --shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+html { scroll-behavior:smooth; }
+body { font-family:'IBM Plex Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.6; min-height:100vh; }
+
+nav { position:sticky; top:0; z-index:50; background:rgba(30,27,75,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 24px; }
+.nav-inner { max-width:1400px; margin:0 auto; display:flex; align-items:center; gap:24px; height:64px; }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
+.logo-icon { width:32px; height:32px; background:var(--accent); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; color:#1E1B4B; }
+.logo span { font-size:18px; font-weight:700; color:var(--text); letter-spacing:-0.3px; }
+.logo span em { color:var(--accent); font-style:normal; }
+.nav-links { display:flex; gap:2px; list-style:none; flex:1; flex-wrap:wrap; }
+.nav-links a { text-decoration:none; color:var(--text-m); font-size:14px; font-weight:500; padding:6px 11px; border-radius:var(--radius-s); transition:all 200ms; white-space:nowrap; cursor:pointer; display:block; }
+.nav-links a:hover,.nav-links a.active { color:var(--accent); background:var(--accent-s); }
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
+.hamburger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; }
+
+.top-banner-ad { background:var(--bg2); border-bottom:1px solid var(--border); padding:8px 24px; display:flex; align-items:center; justify-content:center; }
+.top-banner-ad .ad-inner { max-width:728px; width:100%; height:90px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center; gap:8px; color:var(--text-s); font-size:11px; }
+
+.hero { background:linear-gradient(135deg,#1E1B4B 0%,#252260 50%,#1a1840 100%); padding:48px 24px 32px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-80px; right:-80px; width:400px; height:400px; background:radial-gradient(circle,rgba(245,158,11,0.1) 0%,transparent 70%); pointer-events:none; }
+.hero h1 { font-size:clamp(22px,4vw,38px); font-weight:700; line-height:1.2; margin-bottom:10px; letter-spacing:-0.5px; }
+.hero p { color:var(--text-m); font-size:15px; max-width:520px; margin:0 auto; }
+
+.main-wrap { max-width:1400px; margin:0 auto; padding:28px 24px 48px; display:grid; grid-template-columns:160px 1fr 160px; gap:24px; align-items:start; }
+.ad-sidebar { position:sticky; top:88px; }
+.ad-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); width:160px; min-height:600px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; color:var(--text-s); font-size:11px; }
+
+.calc-stack { display:flex; flex-direction:column; gap:32px; }
+
+.calc-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.calc-card-header { padding:20px 24px 0; }
+.calc-card-header h2 { font-size:18px; font-weight:700; margin-bottom:4px; }
+.calc-card-header p { font-size:13px; color:var(--text-m); margin-bottom:16px; }
+
+.tab-row { display:flex; border-bottom:1px solid var(--border); padding:0 24px; }
+.tab-btn { background:none; border:none; padding:10px 16px; font-family:inherit; font-size:13px; font-weight:500; color:var(--text-m); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 200ms; }
+.tab-btn.active { color:var(--accent); border-bottom-color:var(--accent); }
+.tab-btn:hover { color:var(--accent); }
+
+.tab-content { display:none; padding:24px; }
+.tab-content.active { display:block; }
+
+.calc-input-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+.calc-input-row span { font-size:14px; color:var(--text-m); white-space:nowrap; }
+.calc-inline-input { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:10px 14px; font-family:inherit; font-size:15px; font-weight:500; color:var(--text); outline:none; transition:border-color 200ms; width:140px; -moz-appearance:textfield; }
+.calc-inline-input::-webkit-inner-spin-button, .calc-inline-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+.calc-inline-input:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-s); }
+.calc-inline-label { font-size:13px; color:var(--text-s); }
+
+.calc-result { background:var(--bg2); border:1px solid var(--border-a); border-radius:var(--radius-s); padding:16px 20px; display:flex; align-items:center; gap:16px; }
+.calc-result .r-label { font-size:13px; color:var(--text-m); }
+.calc-result .r-value { font-size:28px; font-weight:700; color:var(--accent); letter-spacing:-0.5px; }
+
+.formula-box { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:20px; }
+.formula-box h4 { font-size:13px; font-weight:600; color:var(--accent); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.8px; }
+.formula { font-size:16px; font-weight:600; color:var(--text); margin-bottom:12px; font-family:monospace; background:var(--bg2); padding:12px 16px; border-radius:var(--radius-s); }
+.formula-box p { font-size:13px; color:var(--text-m); line-height:1.7; }
+
+.examples-box { display:flex; flex-direction:column; gap:12px; }
+.example-item { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:16px; }
+.example-item strong { display:block; font-size:14px; color:var(--text); margin-bottom:4px; }
+.example-item span { font-size:13px; color:var(--text-m); }
+.example-item .ex-answer { display:block; margin-top:8px; font-size:15px; font-weight:700; color:var(--accent); }
+
+.inline-ad { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; display:flex; align-items:center; justify-content:center; min-height:90px; color:var(--text-s); font-size:11px; gap:8px; }
+
+.affiliate-section { background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%); border:1px solid var(--border-a); border-radius:var(--radius); padding:20px 24px; }
+.affiliate-section h3 { font-size:13px; font-weight:600; color:var(--text-m); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; }
+.affiliate-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; display:flex; align-items:center; gap:16px; }
+.affiliate-info { flex:1; }
+.affiliate-info strong { display:block; font-size:15px; font-weight:600; margin-bottom:3px; }
+.affiliate-info span { font-size:13px; color:var(--text-m); }
+.affiliate-info small { display:block; font-size:11px; color:var(--text-s); margin-top:5px; }
+.affiliate-btn { background:var(--accent); color:#1E1B4B; border:none; border-radius:var(--radius-s); padding:11px 18px; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap; transition:background 200ms; display:flex; align-items:center; gap:7px; text-decoration:none; }
+.affiliate-btn:hover { background:var(--accent-h); }
+.annonse-label { font-size:10px; color:var(--text-s); margin-bottom:8px; }
+
+.content-wrap { max-width:860px; margin:0 auto; padding:40px 24px 64px; }
+.content-wrap h2 { font-size:22px; font-weight:700; margin:32px 0 12px; letter-spacing:-0.3px; }
+.content-wrap p { color:var(--text-m); margin-bottom:14px; line-height:1.75; }
+.content-wrap ul { list-style:none; margin:0 0 16px; padding:0; }
+.content-wrap ul li { color:var(--text-m); padding:6px 0 6px 20px; position:relative; line-height:1.7; }
+.content-wrap ul li::before { content:'→'; position:absolute; left:0; color:var(--accent); font-size:12px; top:8px; }
+.info-box { background:var(--card); border:1px solid var(--border-a); border-radius:var(--radius); padding:20px 22px; margin:20px 0; }
+.info-box h4 { font-size:14px; font-weight:600; color:var(--accent); margin-bottom:8px; }
+.info-box p { margin-bottom:0; font-size:14px; }
+.faq-item { border-bottom:1px solid var(--border); padding:16px 0; }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { font-size:15px; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.faq-a { display:none; margin-top:10px; color:var(--text-m); font-size:14px; line-height:1.75; }
+.faq-a.open { display:block; }
+
+.field { margin-bottom:18px; }
+.field label { display:block; font-size:13px; font-weight:500; color:var(--text-m); margin-bottom:7px; }
+.input-wrap { position:relative; display:flex; align-items:center; }
+.input-wrap input[type=number] { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:11px 46px 11px 14px; font-family:inherit; font-size:15px; font-weight:500; color:var(--text); outline:none; transition:border-color 200ms; -moz-appearance:textfield; }
+.input-wrap input[type=number]::-webkit-inner-spin-button, .input-wrap input[type=number]::-webkit-outer-spin-button { -webkit-appearance:none; }
+.input-wrap input[type=number]:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-s); }
+.input-unit { position:absolute; right:13px; font-size:13px; font-weight:600; color:var(--text-s); pointer-events:none; }
+.select-wrap select { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:11px 32px 11px 13px; font-family:inherit; font-size:14px; color:var(--text); outline:none; cursor:pointer; transition:border-color 200ms; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 11px center; }
+.select-wrap select:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-s); }
+.calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+.result-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+.result-main { text-align:center; padding-bottom:20px; border-bottom:1px solid var(--border); margin-bottom:20px; }
+.result-label { font-size:11px; font-weight:500; color:var(--text-m); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:8px; }
+.result-amount { font-size:clamp(28px,5vw,42px); font-weight:700; color:var(--accent); letter-spacing:-1px; line-height:1; margin-bottom:4px; }
+.result-sub { font-size:12px; color:var(--text-s); }
+.result-rows { display:flex; flex-direction:column; gap:13px; }
+.result-row { display:flex; justify-content:space-between; align-items:center; font-size:14px; }
+.result-row .r-label { color:var(--text-m); }
+.result-row .r-val { font-weight:600; }
+.result-row .r-val.accent { color:var(--accent); }
+
+footer { background:var(--bg2); border-top:1px solid var(--border); padding:36px 24px; margin-top:32px; }
+.footer-inner { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 2fr; gap:36px; }
+.footer-brand p { font-size:13px; color:var(--text-m); margin-top:10px; line-height:1.7; }
+footer h4 { font-size:12px; font-weight:600; color:var(--text-m); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
+footer ul { list-style:none; }
+footer ul li { margin-bottom:7px; }
+footer ul a { color:var(--text-m); text-decoration:none; font-size:13px; transition:color 200ms; }
+footer ul a:hover { color:var(--accent); }
+.footer-disclaimer { font-size:12px; color:var(--text-s); line-height:1.7; }
+.footer-bottom { max-width:1400px; margin:28px auto 0; padding-top:18px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-s); }
+
+@media (max-width:1100px) { .main-wrap { grid-template-columns:1fr; } .ad-sidebar { display:none; } }
+@media (max-width:700px) {
+  .calc-input-row { flex-direction:column; align-items:flex-start; }
+  .calc-inline-input { width:100%; }
+  .nav-links { display:none; }
+  .nav-links.open { display:flex; flex-direction:column; position:absolute; top:64px; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--border); padding:12px 20px; z-index:49; gap:2px; }
+  .hamburger { display:flex; }
+  .footer-inner { grid-template-columns:1fr; gap:24px; }
+  .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
+  .calc-grid { grid-template-columns:1fr; }
+  .top-banner-ad { display:none; }
+}
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none !important; animation:none !important; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-icon">%</div><span>Prosent<em>kalken</em></span></a>
+    <ul class="nav-links" id="navLinks"><li><a href="/" class="active">Prosentkalkulator</a></li><li><a href="/fettprosent-kvinner.html" class="">Fettprosent kvinner</a></li><li><a href="/fettprosent-menn.html" class="">Fettprosent menn</a></li><li><a href="/tollkalkulator.html" class="">Tollkalkulator</a></li></ul>
+    <button class="hamburger" id="hamburger" aria-label="Åpne meny"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Prosentkalkulator</h1>
+  <p>Raske og nøyaktige prosentberegninger – finn prosent, prosentandel, økning og nedgang.</p>
+</section>
+<div class="top-banner-ad">
+  <div class="ad-inner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – 728×90</span></div>
+</div>
+<div class="main-wrap">
+<aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
+<main>
+<div class="calc-stack">
+
+<div class="calc-card" id="k1">
+  <div class="calc-card-header">
+    <h2>Finn prosenten</h2>
+    <p>Hva er X prosent av Y? – Beregn prosentandelen av et tall</p>
+  </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('k1','kalkulator',this)">Kalkulator</button>
+    <button class="tab-btn" onclick="switchTab('k1','formel',this)">Formel/utregning</button>
+    <button class="tab-btn" onclick="switchTab('k1','eksempler',this)">Eksempler</button>
+  </div>
+  <div class="tab-content active" id="k1-kalkulator">
+    
+<div class="calc-input-row">
+  <input type="number" class="calc-inline-input" id="k1_del" placeholder="Del av tallet" oninput="calcK1()">
+  <span>er hvilken prosent av</span>
+  <input type="number" class="calc-inline-input" id="k1_hele" placeholder="Det hele tallet" oninput="calcK1()">
+  <span>?</span>
+</div>
+<div class="calc-result">
+  <div>
+    <div class="r-label">Svaret er</div>
+    <div class="r-value" id="k1_result">–</div>
+  </div>
+</div>
+
+  </div>
+  <div class="tab-content" id="k1-formel">
+    
+<div class="formula-box">
+  <h4>Formel</h4>
+  <div class="formula">Del av tallet ÷ Det hele tallet × 100 = Prosent (%)</div>
+  <p>Del det lille tallet på det store tallet, og gang med 100. Resultatet er prosentandelen.</p>
+</div>
+
+  </div>
+  <div class="tab-content" id="k1-eksempler">
+    
+<div class="examples-box">
+  <div class="example-item">
+    <strong>Eksempel 1: Hva er 25 prosent av 200?</strong>
+    <span>25 ÷ 200 × 100 = 12,5 %</span>
+    <span class="ex-answer">25 er 12,5 % av 200</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 2: Du fikk 45 av 60 mulige poeng på en prøve</strong>
+    <span>45 ÷ 60 × 100 = 75 %</span>
+    <span class="ex-answer">Du fikk 75 % på prøven</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 3: En vare koster 349 kr, du betaler 280 kr</strong>
+    <span>280 ÷ 349 × 100 = 80,2 %</span>
+    <span class="ex-answer">Du betaler 80,2 % av originalprisen</span>
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+<div class="calc-card" id="k2">
+  <div class="calc-card-header">
+    <h2>Finn prosentandelen</h2>
+    <p>Hva er X% av Y? – Beregn en konkret verdi fra en prosentsats</p>
+  </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('k2','kalkulator',this)">Kalkulator</button>
+    <button class="tab-btn" onclick="switchTab('k2','formel',this)">Formel/utregning</button>
+    <button class="tab-btn" onclick="switchTab('k2','eksempler',this)">Eksempler</button>
+  </div>
+  <div class="tab-content active" id="k2-kalkulator">
+    
+<div class="calc-input-row">
+  <span>Hva er</span>
+  <input type="number" class="calc-inline-input" id="k2_pct" placeholder="Prosent (%)" oninput="calcK2()">
+  <span>% av</span>
+  <input type="number" class="calc-inline-input" id="k2_hele" placeholder="Det hele tallet" oninput="calcK2()">
+  <span>?</span>
+</div>
+<div class="calc-result">
+  <div>
+    <div class="r-label">Svaret er</div>
+    <div class="r-value" id="k2_result">–</div>
+  </div>
+</div>
+
+  </div>
+  <div class="tab-content" id="k2-formel">
+    
+<div class="formula-box">
+  <h4>Formel</h4>
+  <div class="formula">Prosent (%) ÷ 100 × Det hele tallet = Del av tallet</div>
+  <p>Del prosenten på 100, og gang med det hele tallet for å finne den konkrete verdien.</p>
+</div>
+
+  </div>
+  <div class="tab-content" id="k2-eksempler">
+    
+<div class="examples-box">
+  <div class="example-item">
+    <strong>Eksempel 1: Hva er 20% av 500 kr?</strong>
+    <span>20 ÷ 100 × 500 = 100</span>
+    <span class="ex-answer">20% av 500 kr er 100 kr</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 2: En butikk gir 15% rabatt på en vare til 1 200 kr</strong>
+    <span>15 ÷ 100 × 1 200 = 180</span>
+    <span class="ex-answer">Rabatten er 180 kr</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 3: Du skal betale 25% MVA av 800 kr</strong>
+    <span>25 ÷ 100 × 800 = 200</span>
+    <span class="ex-answer">MVA-beløpet er 200 kr</span>
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+<div class="calc-card" id="k3">
+  <div class="calc-card-header">
+    <h2>Finn det hele tallet</h2>
+    <p>X er Y% av hva? – Beregn det opprinnelige tallet</p>
+  </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('k3','kalkulator',this)">Kalkulator</button>
+    <button class="tab-btn" onclick="switchTab('k3','formel',this)">Formel/utregning</button>
+    <button class="tab-btn" onclick="switchTab('k3','eksempler',this)">Eksempler</button>
+  </div>
+  <div class="tab-content active" id="k3-kalkulator">
+    
+<div class="calc-input-row">
+  <input type="number" class="calc-inline-input" id="k3_del" placeholder="Del av tallet" oninput="calcK3()">
+  <span>er</span>
+  <input type="number" class="calc-inline-input" id="k3_pct" placeholder="Prosent (%)" oninput="calcK3()">
+  <span>% av hva?</span>
+</div>
+<div class="calc-result">
+  <div>
+    <div class="r-label">Det hele tallet er</div>
+    <div class="r-value" id="k3_result">–</div>
+  </div>
+</div>
+
+  </div>
+  <div class="tab-content" id="k3-formel">
+    
+<div class="formula-box">
+  <h4>Formel</h4>
+  <div class="formula">Del av tallet ÷ (Prosent ÷ 100) = Det hele tallet</div>
+  <p>Del det kjente tallet på prosentandelen (uttrykt som desimal) for å finne det opprinnelige tallet.</p>
+</div>
+
+  </div>
+  <div class="tab-content" id="k3-eksempler">
+    
+<div class="examples-box">
+  <div class="example-item">
+    <strong>Eksempel 1: 60 kr er 20% av hva?</strong>
+    <span>60 ÷ (20 ÷ 100) = 60 ÷ 0,20 = 300</span>
+    <span class="ex-answer">60 kr er 20% av 300 kr</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 2: Du fikk 75% på en prøve og hadde 45 riktige svar – hvor mange spørsmål var det?</strong>
+    <span>45 ÷ (75 ÷ 100) = 45 ÷ 0,75 = 60</span>
+    <span class="ex-answer">Prøven hadde 60 spørsmål</span>
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+<div class="calc-card" id="k4">
+  <div class="calc-card-header">
+    <h2>Prosentøkning</h2>
+    <p>Hvor mange prosent økte tallet? – Beregn prosentvis økning</p>
+  </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('k4','kalkulator',this)">Kalkulator</button>
+    <button class="tab-btn" onclick="switchTab('k4','formel',this)">Formel/utregning</button>
+    <button class="tab-btn" onclick="switchTab('k4','eksempler',this)">Eksempler</button>
+  </div>
+  <div class="tab-content active" id="k4-kalkulator">
+    
+<div class="calc-input-row">
+  <span>Økning fra</span>
+  <input type="number" class="calc-inline-input" id="k4_fra" placeholder="Originalt tall" oninput="calcK4()">
+  <span>til</span>
+  <input type="number" class="calc-inline-input" id="k4_til" placeholder="Nytt tall" oninput="calcK4()">
+  <span>?</span>
+</div>
+<div class="calc-result" id="k4_result_box">
+  <div>
+    <div class="r-label" id="k4_label">Prosentøkning</div>
+    <div class="r-value" id="k4_result">–</div>
+  </div>
+</div>
+
+  </div>
+  <div class="tab-content" id="k4-formel">
+    
+<div class="formula-box">
+  <h4>Formel</h4>
+  <div class="formula">(Nytt tall − Originalt tall) ÷ Originalt tall × 100 = Endring (%)</div>
+  <p>Trekk fra det opprinnelige tallet, del på det opprinnelige og gang med 100. Positivt tall = økning. Negativt tall = nedgang.</p>
+</div>
+
+  </div>
+  <div class="tab-content" id="k4-eksempler">
+    
+<div class="examples-box">
+  <div class="example-item">
+    <strong>Eksempel 1: En aksje økte fra 100 kr til 135 kr</strong>
+    <span>(135 − 100) ÷ 100 × 100 = 35</span>
+    <span class="ex-answer">Aksjen økte med 35 %</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 2: Lønn økte fra 45 000 kr til 48 000 kr</strong>
+    <span>(48 000 − 45 000) ÷ 45 000 × 100 = 6,67</span>
+    <span class="ex-answer">Lønnen økte med 6,67 %</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 3: En bolig var priset til 4 200 000 kr og ble solgt for 3 900 000 kr</strong>
+    <span>(3 900 000 − 4 200 000) ÷ 4 200 000 × 100 = −7,14</span>
+    <span class="ex-answer">Prisen gikk ned 7,14 % fra prisantydning</span>
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+<div class="calc-card" id="k5">
+  <div class="calc-card-header">
+    <h2>Prosentnedgang</h2>
+    <p>Hvor mye er det etter X% nedgang? – Beregn nytt tall etter rabatt eller reduksjon</p>
+  </div>
+  <div class="tab-row">
+    <button class="tab-btn active" onclick="switchTab('k5','kalkulator',this)">Kalkulator</button>
+    <button class="tab-btn" onclick="switchTab('k5','formel',this)">Formel/utregning</button>
+    <button class="tab-btn" onclick="switchTab('k5','eksempler',this)">Eksempler</button>
+  </div>
+  <div class="tab-content active" id="k5-kalkulator">
+    
+<div class="calc-input-row">
+  <span>Nedgang fra</span>
+  <input type="number" class="calc-inline-input" id="k5_fra" placeholder="Originalt tall" oninput="calcK5()">
+  <span>med</span>
+  <input type="number" class="calc-inline-input" id="k5_pct" placeholder="Prosent (%)" oninput="calcK5()">
+  <span>%</span>
+</div>
+<div class="calc-result">
+  <div>
+    <div class="r-label">Nytt tall etter nedgang</div>
+    <div class="r-value" id="k5_result">–</div>
+  </div>
+  <div style="margin-left:24px">
+    <div class="r-label">Reduksjon i kr/enheter</div>
+    <div style="font-size:18px;font-weight:600;color:var(--text-m)" id="k5_diff">–</div>
+  </div>
+</div>
+
+  </div>
+  <div class="tab-content" id="k5-formel">
+    
+<div class="formula-box">
+  <h4>Formel</h4>
+  <div class="formula">Originalt tall × (1 − Prosent ÷ 100) = Nytt tall</div>
+  <p>Gang det opprinnelige tallet med (1 minus prosenten som desimal) for å finne det nye beløpet etter nedgang.</p>
+</div>
+
+  </div>
+  <div class="tab-content" id="k5-eksempler">
+    
+<div class="examples-box">
+  <div class="example-item">
+    <strong>Eksempel 1: En jakke koster 1 500 kr – 30% salg</strong>
+    <span>1 500 × (1 − 0,30) = 1 500 × 0,70 = 1 050</span>
+    <span class="ex-answer">Salgsprisen er 1 050 kr (du sparer 450 kr)</span>
+  </div>
+  <div class="example-item">
+    <strong>Eksempel 2: Strømforbruket reduseres med 15% fra 2 400 kWh</strong>
+    <span>2 400 × (1 − 0,15) = 2 400 × 0,85 = 2 040</span>
+    <span class="ex-answer">Nytt forbruk er 2 040 kWh (du sparer 360 kWh)</span>
+  </div>
+</div>
+
+  </div>
+</div>
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+<div class="affiliate-section">
+  <p class="annonse-label">Annonse</p>
+  <h3>Beregn lån og renter</h3>
+  <div class="affiliate-card">
+    <div class="affiliate-info"><strong>Lånekalken – Gratis lånekalkulator</strong><span>Beregn månedlig betaling og effektiv rente for boliglån, billån og forbrukslån</span><small>Gratis verktøy – ingen registrering nødvendig</small></div>
+    <a href="https://lånekalken.no" target="_blank" rel="noopener sponsored" class="affiliate-btn">Se tilbud <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+  </div>
+</div>
+</div>
+</main>
+<aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
+</div>
+
+<div class="content-wrap">
+  <h2>Hva er prosent?</h2>
+  <p>Prosent betyr «per hundre» og brukes til å uttrykke en andel av et tall som en brøk av 100. Prosentberegninger er blant de mest brukte matematiske operasjonene i hverdagen – fra rabatter og renter til karakterer og statistikk.</p>
+  <div class="info-box"><h4>Huskeregel</h4><p>Prosent = Del ÷ Helhet × 100. Denne ene formelen er grunnlaget for alle prosentberegninger.</p></div>
+  <h2>Vanlige bruksområder</h2>
+  <ul>
+    <li>Beregne rabatt på varer og tjenester</li>
+    <li>Finne renter på lån og sparing – se også <a href="https://lånekalken.no" style="color:var(--accent)">Lånekalken.no</a></li>
+    <li>Beregne lønnsvekst og prisøkninger</li>
+    <li>Forstå statistikk og undersøkelser</li>
+    <li>Beregne MVA og skatt</li>
+  </ul>
+  <h2>Ofte stilte spørsmål</h2>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva betyr prosent? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Prosent kommer fra latin «per centum» som betyr «per hundre». 50% betyr 50 av 100, eller halvparten.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er forskjellen på prosentpoeng og prosent? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Prosentpoeng er den absolutte forskjellen mellom to prosenttall. Hvis renten øker fra 3% til 5%, er det en økning på 2 prosentpoeng, men en prosentvis økning på 66,7%.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hvordan beregner jeg MVA? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Norsk MVA er 25%. For å legge til MVA: pris × 1,25. For å trekke fra MVA: pris ÷ 1,25. Bruk «Finn prosentandelen»-kalkulatoren over og legg inn 25% av beløpet.</div></div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo"><div class="logo-icon">%</div><span style="font-size:15px">Prosent<em>kalken</em></span></a>
+      <p>Prosentkalken gir deg raske og nøyaktige prosentberegninger. Gratis verktøy for hverdagen.</p>
+    </div>
+    <div><h4>Verktøy</h4><ul>
+      <li><a href="/">Prosentkalkulator</a></li>
+      <li><a href="/fettprosent-kvinner.html">Fettprosent kvinner</a></li>
+      <li><a href="/fettprosent-menn.html">Fettprosent menn</a></li>
+      <li><a href="/tollkalkulator.html">Tollkalkulator</a></li>
+    </ul></div>
+    <div class="footer-disclaimer"><h4>Relaterte verktøy</h4>
+      <p>Trenger du å beregne lån, renter eller sparing? Besøk søsternettsiden vår <a href="https://lånekalken.no" style="color:var(--accent)">Lånekalken.no</a> for gratis lånekalkulatorer.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Prosentkalken. Alle rettigheter reservert.</span>
+    <a href="#" style="color:var(--text-s);text-decoration:none">Personvernerklæring</a>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  const nav = document.getElementById('navLinks');
+  const open = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  const o = a.classList.toggle('open');
+  const s = el.querySelector('svg');
+  if (s) s.style.transform = o ? 'rotate(180deg)' : '';
+}
+</script>
+</body>
+</html><script>
+function switchTab(calcId, tabName, btn) {
+  document.querySelectorAll('#' + calcId + ' .tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#' + calcId + ' .tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(calcId + '-' + tabName).classList.add('active');
+  btn.classList.add('active');
+}
+
+function fmtNum(n) {
+  if (isNaN(n) || !isFinite(n)) return '–';
+  return n.toLocaleString('nb-NO', { maximumFractionDigits: 4 });
+}
+
+function calcK1() {
+  const del = parseFloat(document.getElementById('k1_del').value);
+  const hele = parseFloat(document.getElementById('k1_hele').value);
+  const el = document.getElementById('k1_result');
+  if (isNaN(del) || isNaN(hele) || hele === 0) { el.textContent = '–'; return; }
+  el.textContent = fmtNum(del / hele * 100) + ' %';
+}
+
+function calcK2() {
+  const pct = parseFloat(document.getElementById('k2_pct').value);
+  const hele = parseFloat(document.getElementById('k2_hele').value);
+  const el = document.getElementById('k2_result');
+  if (isNaN(pct) || isNaN(hele)) { el.textContent = '–'; return; }
+  el.textContent = fmtNum(pct / 100 * hele);
+}
+
+function calcK3() {
+  const del = parseFloat(document.getElementById('k3_del').value);
+  const pct = parseFloat(document.getElementById('k3_pct').value);
+  const el = document.getElementById('k3_result');
+  if (isNaN(del) || isNaN(pct) || pct === 0) { el.textContent = '–'; return; }
+  el.textContent = fmtNum(del / (pct / 100));
+}
+
+function calcK4() {
+  const fra = parseFloat(document.getElementById('k4_fra').value);
+  const til = parseFloat(document.getElementById('k4_til').value);
+  const el = document.getElementById('k4_result');
+  const lbl = document.getElementById('k4_label');
+  if (isNaN(fra) || isNaN(til) || fra === 0) { el.textContent = '–'; return; }
+  const pct = (til - fra) / fra * 100;
+  el.textContent = fmtNum(Math.abs(pct)) + ' %';
+  lbl.textContent = pct >= 0 ? 'Prosentøkning' : 'Prosentnedgang';
+  el.style.color = pct >= 0 ? 'var(--accent)' : '#EF4444';
+}
+
+function calcK5() {
+  const fra = parseFloat(document.getElementById('k5_fra').value);
+  const pct = parseFloat(document.getElementById('k5_pct').value);
+  const el = document.getElementById('k5_result');
+  const diff = document.getElementById('k5_diff');
+  if (isNaN(fra) || isNaN(pct)) { el.textContent = '–'; diff.textContent = '–'; return; }
+  const nytt = fra * (1 - pct / 100);
+  el.textContent = fmtNum(nytt);
+  diff.textContent = fmtNum(fra - nytt);
+}
+</script></body></html>

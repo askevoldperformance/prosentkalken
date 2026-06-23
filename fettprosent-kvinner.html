@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Fettprosent kalkulator kvinner – Beregn fettprosent | Prosentkalken</title>
+  <meta name="description" content="Beregn fettprosenten din som kvinne med US Navy-metoden. Enkel kalkulator med referanseverdier.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://prosentkalken.no/fettprosent-kvinner.html">
+  <meta property="og:title" content="Fettprosent kalkulator kvinner – Beregn fettprosent | Prosentkalken">
+  <meta property="og:description" content="Beregn fettprosenten din som kvinne med US Navy-metoden. Enkel kalkulator med referanseverdier.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://prosentkalken.no/fettprosent-kvinner.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#1E1B4B; --bg2:#252260; --bg3:#2D2975;
+  --card:#262350; --card2:#2E2A6A;
+  --accent:#F59E0B; --accent-h:#D97706; --accent-s:rgba(245,158,11,0.15);
+  --text:#F0F4FA; --text-m:#94A3B8; --text-s:#64748B;
+  --border:rgba(255,255,255,0.08); --border-a:rgba(245,158,11,0.4);
+  --radius:12px; --radius-s:8px; --shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+html { scroll-behavior:smooth; }
+body { font-family:'IBM Plex Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.6; min-height:100vh; }
+
+nav { position:sticky; top:0; z-index:50; background:rgba(30,27,75,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 24px; }
+.nav-inner { max-width:1400px; margin:0 auto; display:flex; align-items:center; gap:24px; height:64px; }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
+.logo-icon { width:32px; height:32px; background:var(--accent); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; color:#1E1B4B; }
+.logo span { font-size:18px; font-weight:700; color:var(--text); letter-spacing:-0.3px; }
+.logo span em { color:var(--accent); font-style:normal; }
+.nav-links { display:flex; gap:2px; list-style:none; flex:1; flex-wrap:wrap; }
+.nav-links a { text-decoration:none; color:var(--text-m); font-size:14px; font-weight:500; padding:6px 11px; border-radius:var(--radius-s); transition:all 200ms; white-space:nowrap; cursor:pointer; display:block; }
+.nav-links a:hover,.nav-links a.active { color:var(--accent); background:var(--accent-s); }
+.hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
+.hamburger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; }
+
+.top-banner-ad { background:var(--bg2); border-bottom:1px solid var(--border); padding:8px 24px; display:flex; align-items:center; justify-content:center; }
+.top-banner-ad .ad-inner { max-width:728px; width:100%; height:90px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center; gap:8px; color:var(--text-s); font-size:11px; }
+
+.hero { background:linear-gradient(135deg,#1E1B4B 0%,#252260 50%,#1a1840 100%); padding:48px 24px 32px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-80px; right:-80px; width:400px; height:400px; background:radial-gradient(circle,rgba(245,158,11,0.1) 0%,transparent 70%); pointer-events:none; }
+.hero h1 { font-size:clamp(22px,4vw,38px); font-weight:700; line-height:1.2; margin-bottom:10px; letter-spacing:-0.5px; }
+.hero p { color:var(--text-m); font-size:15px; max-width:520px; margin:0 auto; }
+
+.main-wrap { max-width:1400px; margin:0 auto; padding:28px 24px 48px; display:grid; grid-template-columns:160px 1fr 160px; gap:24px; align-items:start; }
+.ad-sidebar { position:sticky; top:88px; }
+.ad-box { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); width:160px; min-height:600px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px; color:var(--text-s); font-size:11px; }
+
+.calc-stack { display:flex; flex-direction:column; gap:32px; }
+
+.calc-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; }
+.calc-card-header { padding:20px 24px 0; }
+.calc-card-header h2 { font-size:18px; font-weight:700; margin-bottom:4px; }
+.calc-card-header p { font-size:13px; color:var(--text-m); margin-bottom:16px; }
+
+.tab-row { display:flex; border-bottom:1px solid var(--border); padding:0 24px; }
+.tab-btn { background:none; border:none; padding:10px 16px; font-family:inherit; font-size:13px; font-weight:500; color:var(--text-m); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 200ms; }
+.tab-btn.active { color:var(--accent); border-bottom-color:var(--accent); }
+.tab-btn:hover { color:var(--accent); }
+
+.tab-content { display:none; padding:24px; }
+.tab-content.active { display:block; }
+
+.calc-input-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:20px; }
+.calc-input-row span { font-size:14px; color:var(--text-m); white-space:nowrap; }
+.calc-inline-input { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:10px 14px; font-family:inherit; font-size:15px; font-weight:500; color:var(--text); outline:none; transition:border-color 200ms; width:140px; -moz-appearance:textfield; }
+.calc-inline-input::-webkit-inner-spin-button, .calc-inline-input::-webkit-outer-spin-button { -webkit-appearance:none; }
+.calc-inline-input:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-s); }
+.calc-inline-label { font-size:13px; color:var(--text-s); }
+
+.calc-result { background:var(--bg2); border:1px solid var(--border-a); border-radius:var(--radius-s); padding:16px 20px; display:flex; align-items:center; gap:16px; }
+.calc-result .r-label { font-size:13px; color:var(--text-m); }
+.calc-result .r-value { font-size:28px; font-weight:700; color:var(--accent); letter-spacing:-0.5px; }
+
+.formula-box { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:20px; }
+.formula-box h4 { font-size:13px; font-weight:600; color:var(--accent); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.8px; }
+.formula { font-size:16px; font-weight:600; color:var(--text); margin-bottom:12px; font-family:monospace; background:var(--bg2); padding:12px 16px; border-radius:var(--radius-s); }
+.formula-box p { font-size:13px; color:var(--text-m); line-height:1.7; }
+
+.examples-box { display:flex; flex-direction:column; gap:12px; }
+.example-item { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:16px; }
+.example-item strong { display:block; font-size:14px; color:var(--text); margin-bottom:4px; }
+.example-item span { font-size:13px; color:var(--text-m); }
+.example-item .ex-answer { display:block; margin-top:8px; font-size:15px; font-weight:700; color:var(--accent); }
+
+.inline-ad { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:16px 20px; display:flex; align-items:center; justify-content:center; min-height:90px; color:var(--text-s); font-size:11px; gap:8px; }
+
+.affiliate-section { background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%); border:1px solid var(--border-a); border-radius:var(--radius); padding:20px 24px; }
+.affiliate-section h3 { font-size:13px; font-weight:600; color:var(--text-m); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; }
+.affiliate-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; display:flex; align-items:center; gap:16px; }
+.affiliate-info { flex:1; }
+.affiliate-info strong { display:block; font-size:15px; font-weight:600; margin-bottom:3px; }
+.affiliate-info span { font-size:13px; color:var(--text-m); }
+.affiliate-info small { display:block; font-size:11px; color:var(--text-s); margin-top:5px; }
+.affiliate-btn { background:var(--accent); color:#1E1B4B; border:none; border-radius:var(--radius-s); padding:11px 18px; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; white-space:nowrap; transition:background 200ms; display:flex; align-items:center; gap:7px; text-decoration:none; }
+.affiliate-btn:hover { background:var(--accent-h); }
+.annonse-label { font-size:10px; color:var(--text-s); margin-bottom:8px; }
+
+.content-wrap { max-width:860px; margin:0 auto; padding:40px 24px 64px; }
+.content-wrap h2 { font-size:22px; font-weight:700; margin:32px 0 12px; letter-spacing:-0.3px; }
+.content-wrap p { color:var(--text-m); margin-bottom:14px; line-height:1.75; }
+.content-wrap ul { list-style:none; margin:0 0 16px; padding:0; }
+.content-wrap ul li { color:var(--text-m); padding:6px 0 6px 20px; position:relative; line-height:1.7; }
+.content-wrap ul li::before { content:'→'; position:absolute; left:0; color:var(--accent); font-size:12px; top:8px; }
+.info-box { background:var(--card); border:1px solid var(--border-a); border-radius:var(--radius); padding:20px 22px; margin:20px 0; }
+.info-box h4 { font-size:14px; font-weight:600; color:var(--accent); margin-bottom:8px; }
+.info-box p { margin-bottom:0; font-size:14px; }
+.faq-item { border-bottom:1px solid var(--border); padding:16px 0; }
+.faq-item:last-child { border-bottom:none; }
+.faq-q { font-size:15px; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.faq-a { display:none; margin-top:10px; color:var(--text-m); font-size:14px; line-height:1.75; }
+.faq-a.open { display:block; }
+
+.field { margin-bottom:18px; }
+.field label { display:block; font-size:13px; font-weight:500; color:var(--text-m); margin-bottom:7px; }
+.input-wrap { position:relative; display:flex; align-items:center; }
+.input-wrap input[type=number] { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:11px 46px 11px 14px; font-family:inherit; font-size:15px; font-weight:500; color:var(--text); outline:none; transition:border-color 200ms; -moz-appearance:textfield; }
+.input-wrap input[type=number]::-webkit-inner-spin-button, .input-wrap input[type=number]::-webkit-outer-spin-button { -webkit-appearance:none; }
+.input-wrap input[type=number]:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-s); }
+.input-unit { position:absolute; right:13px; font-size:13px; font-weight:600; color:var(--text-s); pointer-events:none; }
+.select-wrap select { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius-s); padding:11px 32px 11px 13px; font-family:inherit; font-size:14px; color:var(--text); outline:none; cursor:pointer; transition:border-color 200ms; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 11px center; }
+.select-wrap select:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-s); }
+.calc-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+.result-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+.result-main { text-align:center; padding-bottom:20px; border-bottom:1px solid var(--border); margin-bottom:20px; }
+.result-label { font-size:11px; font-weight:500; color:var(--text-m); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:8px; }
+.result-amount { font-size:clamp(28px,5vw,42px); font-weight:700; color:var(--accent); letter-spacing:-1px; line-height:1; margin-bottom:4px; }
+.result-sub { font-size:12px; color:var(--text-s); }
+.result-rows { display:flex; flex-direction:column; gap:13px; }
+.result-row { display:flex; justify-content:space-between; align-items:center; font-size:14px; }
+.result-row .r-label { color:var(--text-m); }
+.result-row .r-val { font-weight:600; }
+.result-row .r-val.accent { color:var(--accent); }
+
+footer { background:var(--bg2); border-top:1px solid var(--border); padding:36px 24px; margin-top:32px; }
+.footer-inner { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 2fr; gap:36px; }
+.footer-brand p { font-size:13px; color:var(--text-m); margin-top:10px; line-height:1.7; }
+footer h4 { font-size:12px; font-weight:600; color:var(--text-m); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:12px; }
+footer ul { list-style:none; }
+footer ul li { margin-bottom:7px; }
+footer ul a { color:var(--text-m); text-decoration:none; font-size:13px; transition:color 200ms; }
+footer ul a:hover { color:var(--accent); }
+.footer-disclaimer { font-size:12px; color:var(--text-s); line-height:1.7; }
+.footer-bottom { max-width:1400px; margin:28px auto 0; padding-top:18px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-s); }
+
+@media (max-width:1100px) { .main-wrap { grid-template-columns:1fr; } .ad-sidebar { display:none; } }
+@media (max-width:700px) {
+  .calc-input-row { flex-direction:column; align-items:flex-start; }
+  .calc-inline-input { width:100%; }
+  .nav-links { display:none; }
+  .nav-links.open { display:flex; flex-direction:column; position:absolute; top:64px; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--border); padding:12px 20px; z-index:49; gap:2px; }
+  .hamburger { display:flex; }
+  .footer-inner { grid-template-columns:1fr; gap:24px; }
+  .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
+  .calc-grid { grid-template-columns:1fr; }
+  .top-banner-ad { display:none; }
+}
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none !important; animation:none !important; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-icon">%</div><span>Prosent<em>kalken</em></span></a>
+    <ul class="nav-links" id="navLinks"><li><a href="/" class="">Prosentkalkulator</a></li><li><a href="/fettprosent-kvinner.html" class="active">Fettprosent kvinner</a></li><li><a href="/fettprosent-menn.html" class="">Fettprosent menn</a></li><li><a href="/tollkalkulator.html" class="">Tollkalkulator</a></li></ul>
+    <button class="hamburger" id="hamburger" aria-label="Åpne meny"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Fettprosent kalkulator – Kvinner</h1>
+  <p>Beregn fettprosenten din basert på kroppsomkrets. Bruker den militære metoden (US Navy) som er nøyaktig og enkel.</p>
+</section>
+<div class="top-banner-ad">
+  <div class="ad-inner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – 728×90</span></div>
+</div>
+<div class="main-wrap">
+<aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
+<main>
+<div class="calc-stack">
+<div class="calc-card">
+  <div class="calc-card-header">
+    <h2>Fettprosent – Kvinner</h2>
+    <p>Mål i centimeter. Mål på morgenen etter toalettbesøk for mest nøyaktig resultat.</p>
+  </div>
+  <div style="padding:24px">
+    <div class="calc-grid">
+    <div>
+      <div class="field"><label>Høyde (cm)</label>
+        <div class="input-wrap"><input type="number" id="k_hoyde" value="168" min="140" max="220" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
+      <div class="field"><label>Livvidde – navlenivå (cm)</label>
+        <div class="input-wrap"><input type="number" id="k_midje" value="75" min="50" max="150" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
+      <div class="field"><label>Hoftomkrets – bredeste punkt (cm)</label>
+        <div class="input-wrap"><input type="number" id="k_hofte" value="95" min="50" max="160" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
+      <div class="field"><label>Nakkeomkrets (cm)</label>
+        <div class="input-wrap"><input type="number" id="k_nakke" value="33" min="25" max="55" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
+    </div>
+    <div class="result-card">
+      <div class="result-main">
+        <div class="result-label">Fettprosent</div>
+        <div class="result-amount" id="k_fett_result">–</div>
+        <div class="result-sub" id="k_fett_kategori"></div>
+      </div>
+      <div class="result-rows">
+        <div class="result-row"><span class="r-label">Kategori</span><span class="r-val accent" id="k_fett_kat2">–</span></div>
+        <div class="result-row"><span class="r-label">Metode</span><span class="r-val">US Navy</span></div>
+      </div>
+      <div style="margin-top:20px;background:var(--bg);border-radius:var(--radius-s);padding:14px">
+        <div style="font-size:11px;color:var(--text-s);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.8px">Referanseverdier kvinner</div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+          <div style="display:flex;justify-content:space-between"><span style="color:#60A5FA">Essensiell fett</span><span>10–13%</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#34D399">Atletisk</span><span>14–20%</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent)">God form</span><span>21–24%</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#FBBF24">Akseptabel</span><span>25–31%</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#EF4444">Høy fett</span><span>32%+</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+<div class="affiliate-section">
+  <p class="annonse-label">Annonse</p>
+  <h3>Treningsutstyr og kosttilskudd</h3>
+  <div class="affiliate-card">
+    <div class="affiliate-info"><strong>Gymgrossisten – Norges største treningsbutikk</strong><span>Alt du trenger for å nå treningsmålene dine</span><small>Stort utvalg av proteiner, vitaminer og treningsutstyr</small></div>
+    <a href="https://www.gymgrossisten.com" target="_blank" rel="noopener sponsored" class="affiliate-btn">Se tilbud <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+  </div>
+</div>
+</div>
+</main>
+<aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
+</div>
+<div class="content-wrap">
+  <h2>Slik måler du fettprosenten din</h2>
+  <p>US Navy-metoden bruker enkle omkretsmålinger og er dokumentert nøyaktig til ±3–4 prosentpoeng for de fleste. Mål alltid på morgenen, etter toalettbesøk og før du har spist eller drukket.</p>
+  <h2>Slik tar du målingene</h2>
+  <ul>
+    <li><strong>Høyde:</strong> Uten sko, stå rett opp</li>
+    <li><strong>Livvidde:</strong> Mål rundt navlen, pust normalt ut</li>
+    <li><strong>Hofte:</strong> Mål på det bredeste punktet rundt hoftene og rumpa</li>
+    <li><strong>Nakke:</strong> Mål rett under strupehodet, skrått nedover</li>
+  </ul>
+  <div class="info-box"><h4>Tips for nøyaktighet</h4><p>Ta tre målinger og bruk gjennomsnittet. Bruk et mykt målebånd og hold det horisontalt. Ikke press det for stramt – det skal ligge mot huden uten å klemme.</p></div>
+  <h2>Ofte stilte spørsmål</h2>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er sunn fettprosent for kvinner? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">For kvinner regnes 21–24% som god form, 14–20% som atletisk. Essensiell fett for kvinner er 10–13% – under dette kan det påvirke hormonbalansen negativt.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Er US Navy-metoden nøyaktig? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">US Navy-metoden er nøyaktig til ±3–4 prosentpoeng for de fleste. Den er ikke like presis som DEXA-scanning eller hydrostatisk veiing, men er et godt og gratis alternativ for hjemmebruk.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er forskjellen på fettprosent og BMI? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">BMI måler kun forholdet mellom høyde og vekt, og skiller ikke mellom fett og muskelmasse. Fettprosent er mer presis og gir bedre bilde av kroppssammensetningen.</div></div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo"><div class="logo-icon">%</div><span style="font-size:15px">Prosent<em>kalken</em></span></a>
+      <p>Prosentkalken gir deg raske og nøyaktige prosentberegninger. Gratis verktøy for hverdagen.</p>
+    </div>
+    <div><h4>Verktøy</h4><ul>
+      <li><a href="/">Prosentkalkulator</a></li>
+      <li><a href="/fettprosent-kvinner.html">Fettprosent kvinner</a></li>
+      <li><a href="/fettprosent-menn.html">Fettprosent menn</a></li>
+      <li><a href="/tollkalkulator.html">Tollkalkulator</a></li>
+    </ul></div>
+    <div class="footer-disclaimer"><h4>Relaterte verktøy</h4>
+      <p>Trenger du å beregne lån, renter eller sparing? Besøk søsternettsiden vår <a href="https://lånekalken.no" style="color:var(--accent)">Lånekalken.no</a> for gratis lånekalkulatorer.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Prosentkalken. Alle rettigheter reservert.</span>
+    <a href="#" style="color:var(--text-s);text-decoration:none">Personvernerklæring</a>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  const nav = document.getElementById('navLinks');
+  const open = nav.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  const o = a.classList.toggle('open');
+  const s = el.querySelector('svg');
+  if (s) s.style.transform = o ? 'rotate(180deg)' : '';
+}
+</script>
+</body>
+</html><script>
+function calcFettK() {
+  const h = parseFloat(document.getElementById('k_hoyde').value) || 0;
+  const m = parseFloat(document.getElementById('k_midje').value) || 0;
+  const ho = parseFloat(document.getElementById('k_hofte').value) || 0;
+  const n = parseFloat(document.getElementById('k_nakke').value) || 0;
+  if (!h || !m || !ho || !n || (m + ho - n) <= 0) return;
+  const fett = 163.205 * Math.log10(m + ho - n) - 97.684 * Math.log10(h) - 78.387;
+  const r = document.getElementById('k_fett_result');
+  const k = document.getElementById('k_fett_kat2');
+  r.textContent = Math.round(fett * 10) / 10 + ' %';
+  let kat = '', color = 'var(--accent)';
+  if (fett < 14) { kat = 'Essensiell / Atletisk'; color = '#60A5FA'; }
+  else if (fett < 21) { kat = 'Atletisk'; color = '#34D399'; }
+  else if (fett < 25) { kat = 'God form'; color = 'var(--accent)'; }
+  else if (fett < 32) { kat = 'Akseptabel'; color = '#FBBF24'; }
+  else { kat = 'Høy fettprosent'; color = '#EF4444'; }
+  k.textContent = kat;
+  k.style.color = color;
+  r.style.color = color;
+}
+calcFettK();
+</script></body></html>
