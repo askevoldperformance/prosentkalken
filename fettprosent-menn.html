@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Fettprosent kalkulator menn – Beregn fettprosent | Prosentkalken</title>
-  <meta name="description" content="Beregn fettprosenten din som mann med US Navy-metoden. Enkel kalkulator med referanseverdier.">
+  <title>Fettprosent kalkulator menn – Jackson-Pollock | Prosentkalken</title>
+  <meta name="description" content="Beregn fettprosenten din som mann med Jackson-Pollock 3-punkts metode. Kaliper-kalkulator med referanseverdier og veiledning.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://prosentkalken.no/fettprosent-menn.html">
-  <meta property="og:title" content="Fettprosent kalkulator menn – Beregn fettprosent | Prosentkalken">
-  <meta property="og:description" content="Beregn fettprosenten din som mann med US Navy-metoden. Enkel kalkulator med referanseverdier.">
+  <meta property="og:title" content="Fettprosent kalkulator menn – Jackson-Pollock | Prosentkalken">
+  <meta property="og:description" content="Beregn fettprosenten din som mann med Jackson-Pollock 3-punkts metode. Kaliper-kalkulator med referanseverdier og veiledning.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://prosentkalken.no/fettprosent-menn.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,7 +176,7 @@ footer ul a:hover { color:var(--accent); }
 
 <section class="hero">
   <h1>Fettprosent kalkulator – Menn</h1>
-  <p>Beregn fettprosenten din basert på kroppsomkrets. Bruker den militære metoden (US Navy) som er nøyaktig og enkel.</p>
+  <p>Beregn fettprosenten din med Jackson-Pollock 3-punkts metode. Nøyaktig og vitenskapelig validert – brukt av personlige trenere og idrettsmiljøer.</p>
 </section>
 <div class="top-banner-ad">
   <div class="ad-inner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – 728×90</span></div>
@@ -185,73 +185,133 @@ footer ul a:hover { color:var(--accent); }
 <aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
 <main>
 <div class="calc-stack">
+
 <div class="calc-card">
   <div class="calc-card-header">
-    <h2>Fettprosent – Menn</h2>
-    <p>Mål i centimeter. Mål på morgenen etter toalettbesøk for mest nøyaktig resultat.</p>
+    <h2>Jackson-Pollock 3-punkt – Menn</h2>
+    <p>Mål hudfoldene med fettkaliper (fettklype) på tre punkter. Oppgi verdiene i millimeter.</p>
   </div>
   <div style="padding:24px">
     <div class="calc-grid">
     <div>
-      <div class="field"><label>Høyde (cm)</label>
-        <div class="input-wrap"><input type="number" id="m_hoyde" value="180" min="150" max="230" oninput="calcFettM()"><span class="input-unit">cm</span></div></div>
-      <div class="field"><label>Livvidde – navlenivå (cm)</label>
-        <div class="input-wrap"><input type="number" id="m_midje" value="85" min="50" max="160" oninput="calcFettM()"><span class="input-unit">cm</span></div></div>
-      <div class="field"><label>Nakkeomkrets (cm)</label>
-        <div class="input-wrap"><input type="number" id="m_nakke" value="38" min="28" max="60" oninput="calcFettM()"><span class="input-unit">cm</span></div></div>
+      <div class="field"><label for="m_alder">Alder (år)</label>
+        <div class="input-wrap"><input type="number" id="m_alder" value="30" min="15" max="80" oninput="calcM()"><span class="input-unit">år</span></div></div>
+      <div class="field"><label for="m_bryst">Bryst (mm)</label>
+        <div class="input-wrap"><input type="number" id="m_bryst" value="12" min="1" max="60" oninput="calcM()"><span class="input-unit">mm</span></div>
+        <div style="font-size:12px;color:var(--text-s);margin-top:5px">Diagonal hudfold mellom brystvorte og armhule</div></div>
+      <div class="field"><label for="m_mage">Mage (mm)</label>
+        <div class="input-wrap"><input type="number" id="m_mage" value="18" min="1" max="60" oninput="calcM()"><span class="input-unit">mm</span></div>
+        <div style="font-size:12px;color:var(--text-s);margin-top:5px">Vertikal hudfold 2–3 cm til høyre for navlen</div></div>
+      <div class="field"><label for="m_lar">Lår (mm)</label>
+        <div class="input-wrap"><input type="number" id="m_lar" value="15" min="1" max="60" oninput="calcM()"><span class="input-unit">mm</span></div>
+        <div style="font-size:12px;color:var(--text-s);margin-top:5px">Vertikal hudfold midt på forsiden av låret</div></div>
     </div>
     <div class="result-card">
       <div class="result-main">
         <div class="result-label">Fettprosent</div>
-        <div class="result-amount" id="m_fett_result">–</div>
-        <div class="result-sub">US Navy-metoden</div>
+        <div class="result-amount" id="m_result">–</div>
+        <div class="result-sub">Jackson-Pollock formel</div>
       </div>
       <div class="result-rows">
-        <div class="result-row"><span class="r-label">Kategori</span><span class="r-val accent" id="m_fett_kat">–</span></div>
-        <div class="result-row"><span class="r-label">Metode</span><span class="r-val">US Navy</span></div>
+        <div class="result-row"><span class="r-label">Kategori</span><span class="r-val accent" id="m_kat">–</span></div>
+        <div class="result-row"><span class="r-label">Sum hudfolder</span><span class="r-val" id="m_sum">–</span></div>
       </div>
       <div style="margin-top:20px;background:var(--bg);border-radius:var(--radius-s);padding:14px">
         <div style="font-size:11px;color:var(--text-s);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.8px">Referanseverdier menn</div>
         <div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
-          <div style="display:flex;justify-content:space-between"><span style="color:#60A5FA">Essensiell fett</span><span>2–5%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#34D399">Atletisk</span><span>6–13%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent)">God form</span><span>14–17%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#FBBF24">Akseptabel</span><span>18–24%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#EF4444">Høy fett</span><span>25%+</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#60A5FA">Essensielt fett</span><span>2–5 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#34D399">Atletisk</span><span>6–13 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent)">Fitness</span><span>14–17 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#FBBF24">Akseptabel</span><span>18–24 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#F97316">Overvekt</span><span>25–34 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#EF4444">Fedme</span><span>35 %+</span></div>
         </div>
       </div>
     </div>
     </div>
   </div>
 </div>
+
 <div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+<div class="calc-card">
+  <div class="calc-card-header">
+    <h2>Slik tar du målingene</h2>
+    <p>Korrekt måleteknikk er avgjørende for nøyaktige resultater.</p>
+  </div>
+  <div style="padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--bg);border-radius:var(--radius-s);padding:16px;border-left:3px solid var(--accent)">
+      <strong style="display:block;margin-bottom:6px">Bryst</strong>
+      <span style="font-size:13px;color:var(--text-m)">Ta en diagonal hudfold halvveis mellom brystniplet og fremre armhule. Klem opp en fold med tommelfinger og pekefinger, og mål med kaliveren.</span>
+    </div>
+    <div style="background:var(--bg);border-radius:var(--radius-s);padding:16px;border-left:3px solid var(--accent)">
+      <strong style="display:block;margin-bottom:6px">Mage</strong>
+      <span style="font-size:13px;color:var(--text-m)">Ta en vertikal hudfold 2–3 cm til høyre for navlen. Hold folden parallelt med kroppens midtlinje.</span>
+    </div>
+    <div style="background:var(--bg);border-radius:var(--radius-s);padding:16px;border-left:3px solid var(--accent)">
+      <strong style="display:block;margin-bottom:6px">Lår</strong>
+      <span style="font-size:13px;color:var(--text-m)">Ta en vertikal hudfold midt på forsiden av låret, halvveis mellom hofteknopp og kneleddet. Mål mens du sitter eller støtter vekten på den andre foten.</span>
+    </div>
+    <div class="info-box">
+      <h4>Tips for nøyaktighet</h4>
+      <p>Ta tre målinger på hvert punkt og bruk gjennomsnittet. Mål alltid på samme sted og til samme tid på dagen. Ikke mål rett etter trening – venter til kroppen er avkjølt.</p>
+    </div>
+  </div>
+</div>
+
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
 <div class="affiliate-section">
   <p class="annonse-label">Annonse</p>
-  <h3>Treningsutstyr og kosttilskudd</h3>
+  <h3>Kjøp fettkaliper</h3>
   <div class="affiliate-card">
-    <div class="affiliate-info"><strong>Gymgrossisten – Norges største treningsbutikk</strong><span>Alt du trenger for å nå treningsmålene dine</span><small>Stort utvalg av proteiner, vitaminer og treningsutstyr</small></div>
+    <div class="affiliate-info"><strong>Gymgrossisten – Fettkaliper og treningsutstyr</strong><span>Profesjonell fettkaliper for nøyaktige målinger hjemme</span><small>Stort utvalg av treningsutstyr og kosttilskudd</small></div>
     <a href="https://www.gymgrossisten.com" target="_blank" rel="noopener sponsored" class="affiliate-btn">Se tilbud <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
   </div>
 </div>
+
 </div>
 </main>
 <aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
 </div>
+
 <div class="content-wrap">
-  <h2>Slik måler du fettprosenten din</h2>
-  <p>For menn bruker US Navy-metoden livvidde og nakkeomkrets – ingen hoftemål. Mål alltid på morgenen, etter toalettbesøk og før du har spist.</p>
-  <h2>Slik tar du målingene</h2>
+  <h2>Hva er fettprosent og hvorfor er det viktig?</h2>
+  <p>Fettprosent er andelen av kroppsvekten din som består av fett. Det er et langt mer presist mål på kroppssammensetning enn BMI, som ikke skiller mellom fett og muskelmasse. To menn med identisk BMI kan ha svært forskjellig fettprosent – en muskuløs idrettsutøver og en stillesittende person kan veie det samme, men ha helt ulik helse og kroppssammensetning.</p>
+
+  <h2>Hva er normal fettprosent for menn?</h2>
+  <p>Normal fettprosent for menn varierer med alder, treningsnivå og genetikk. Menn har naturlig lavere fettprosent enn kvinner – typisk 7–10 prosentpoeng lavere ved samme aktivitetsnivå.</p>
   <ul>
-    <li><strong>Høyde:</strong> Uten sko, stå rett opp</li>
-    <li><strong>Livvidde:</strong> Mål horisontalt rundt navlen, pust normalt ut</li>
-    <li><strong>Nakke:</strong> Mål rett under strupehodet, skrått nedover foran</li>
+    <li><strong>Essensielt fett (2–5%):</strong> Minimum nødvendig fett for grunnleggende kroppsfunksjoner. Under dette nivået er det helsefarlig.</li>
+    <li><strong>Atletisk (6–13%):</strong> Typisk for mannlige idrettsutøvere og konkurranseutøvere med hard trening.</li>
+    <li><strong>Fitness (14–17%):</strong> Godt trent med synlig muskeldefinisjon. Et realistisk mål for aktive menn.</li>
+    <li><strong>Akseptabel (18–24%):</strong> Normal, sunn fettprosent for menn med moderat aktivitet.</li>
+    <li><strong>Overvekt (25–34%):</strong> Forhøyet fettprosent som over tid kan øke risiko for livsstilssykdommer.</li>
+    <li><strong>Fedme (35%+):</strong> Betydelig helserisiko – bør adresseres med medisinsk veiledning.</li>
   </ul>
-  <div class="info-box"><h4>Menn vs. kvinner</h4><p>Menn trenger ikke hoftemål fordi fettfordelingen er annerledes. For menn samler fett seg primært rundt magen, mens kvinner lagrer mer fett rundt hofter og lår.</p></div>
+
+  <div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+  <h2>Jackson-Pollock-formelen forklart</h2>
+  <p>Jackson-Pollock 3-punkts metode er en av de mest brukte og vitenskapelig validerte metodene for å estimere fettprosent. Formelen beregner først kroppstetthet ut fra summen av tre hudfoldmålinger og alder, og konverterer deretter tettheten til fettprosent ved hjelp av Siri-formelen.</p>
+  <div class="info-box">
+    <h4>Nøyaktighet</h4>
+    <p>Jackson-Pollock-metoden er nøyaktig til ±3–4 prosentpoeng for de fleste når målingene tas korrekt. Den er mer presis enn BMI og US Navy-metoden, men mindre presis enn DEXA-scanning eller hydrostatisk veiing.</p>
+  </div>
+
+  <h2>Slik reduserer du fettprosenten</h2>
+  <p>For å senke fettprosenten handler det om to ting: kaloriunderskudd og bevaring av muskelmasse. Kombiner styrketrening med moderat kalorirestriksjon (500 kcal under vedlikeholdsnivå) og sørg for tilstrekkelig proteininntak (1,6–2,2 g per kg kroppsvekt). Sikt på 0,5–1 kg vektnedgang per uke – raskere vekttap fører til muskeltap.</p>
+  <p>Se også: <a href="/fettprosent-kvinner.html" style="color:var(--accent)">Fettprosent kalkulator for kvinner →</a></p>
+
   <h2>Ofte stilte spørsmål</h2>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er sunn fettprosent for menn? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="faq-a">For menn regnes 14–17% som god form, 6–13% som atletisk. Essensiell fett for menn er 2–5% – under dette er det helsefarlig.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hvordan redusere fettprosenten? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="faq-a">Kombinasjon av kalorirestriksjon og styrketrening er mest effektivt. Sikt på 0,5–1 kg vektnedgang per uke for å bevare muskelmasse. Protein på 1,6–2,2 g per kilo kroppsvekt per dag hjelper med å bevare muskler under vektnedgang.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Trenger jeg fettkaliper for å bruke kalkulatoren? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Ja, Jackson-Pollock-metoden krever fettkaliper (fettklype) for å måle hudfoldens tykkelse i millimeter. Du kan kjøpe en enkel kaliper for 100–200 kr. Alternativt kan et treningsstudio ta målingene for deg.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er forskjellen på Jackson-Pollock og US Navy-metoden? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Jackson-Pollock bruker hudfoldmålinger med kaliper og er mer presis for de fleste. US Navy-metoden bruker omkretsmålinger med målebånd og krever ikke spesialutstyr, men er noe mindre nøyaktig.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Når bør jeg måle fettprosenten? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Mål alltid til samme tid på dagen, helst om morgenen etter toalettbesøk og før du har spist eller drukket. Ikke mål rett etter trening eller badstue – varme og svette påvirker hudfolden. Mål månedlig for å følge utvikling over tid.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Er fettprosent eller BMI best? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Fettprosent er et langt bedre mål enn BMI for de fleste. BMI skiller ikke mellom fett og muskelmasse – en muskuløs idrettsutøver kan ha «overvekt» ifølge BMI, men lav og sunn fettprosent. Fettprosent gir et reelt bilde av kroppssammensetningen.</div></div>
 </div>
 <footer>
   <div class="footer-inner">
@@ -290,24 +350,30 @@ function toggleFaq(el) {
 </script>
 </body>
 </html><script>
-function calcFettM() {
-  const h = parseFloat(document.getElementById('m_hoyde').value) || 0;
-  const m = parseFloat(document.getElementById('m_midje').value) || 0;
-  const n = parseFloat(document.getElementById('m_nakke').value) || 0;
-  if (!h || !m || !n || (m - n) <= 0) return;
-  const fett = 86.010 * Math.log10(m - n) - 70.041 * Math.log10(h) + 36.76;
-  const r = document.getElementById('m_fett_result');
-  const k = document.getElementById('m_fett_kat');
+function calcM() {
+  const alder = parseFloat(document.getElementById('m_alder').value) || 0;
+  const bryst = parseFloat(document.getElementById('m_bryst').value) || 0;
+  const mage  = parseFloat(document.getElementById('m_mage').value)  || 0;
+  const lar   = parseFloat(document.getElementById('m_lar').value)   || 0;
+  if (!alder || !bryst || !mage || !lar) return;
+  const sum = bryst + mage + lar;
+  const tetthet = 1.10938 - (0.0008267 * sum) + (0.0000016 * sum * sum) - (0.0002574 * alder);
+  const fett = (495 / tetthet) - 450;
+  const r = document.getElementById('m_result');
+  const k = document.getElementById('m_kat');
+  const s = document.getElementById('m_sum');
   r.textContent = Math.round(fett * 10) / 10 + ' %';
+  s.textContent = sum + ' mm';
   let kat = '', color = 'var(--accent)';
-  if (fett < 6) { kat = 'Essensiell fett'; color = '#60A5FA'; }
-  else if (fett < 14) { kat = 'Atletisk'; color = '#34D399'; }
-  else if (fett < 18) { kat = 'God form'; color = 'var(--accent)'; }
-  else if (fett < 25) { kat = 'Akseptabel'; color = '#FBBF24'; }
-  else { kat = 'Høy fettprosent'; color = '#EF4444'; }
+  if (fett < 6)       { kat = 'Essensielt fett'; color = '#60A5FA'; }
+  else if (fett < 14) { kat = 'Atletisk';        color = '#34D399'; }
+  else if (fett < 18) { kat = 'Fitness';         color = 'var(--accent)'; }
+  else if (fett < 25) { kat = 'Akseptabel';      color = '#FBBF24'; }
+  else if (fett < 35) { kat = 'Overvekt';        color = '#F97316'; }
+  else                { kat = 'Fedme';           color = '#EF4444'; }
   k.textContent = kat;
   k.style.color = color;
   r.style.color = color;
 }
-calcFettM();
+calcM();
 </script></body></html>

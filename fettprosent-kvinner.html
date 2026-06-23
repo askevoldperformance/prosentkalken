@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Fettprosent kalkulator kvinner – Beregn fettprosent | Prosentkalken</title>
-  <meta name="description" content="Beregn fettprosenten din som kvinne med US Navy-metoden. Enkel kalkulator med referanseverdier.">
+  <title>Fettprosent kalkulator kvinner – Jackson-Pollock | Prosentkalken</title>
+  <meta name="description" content="Beregn fettprosenten din som kvinne med Jackson-Pollock 3-punkts metode. Inkludert alderstabell og referanseverdier.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://prosentkalken.no/fettprosent-kvinner.html">
-  <meta property="og:title" content="Fettprosent kalkulator kvinner – Beregn fettprosent | Prosentkalken">
-  <meta property="og:description" content="Beregn fettprosenten din som kvinne med US Navy-metoden. Enkel kalkulator med referanseverdier.">
+  <meta property="og:title" content="Fettprosent kalkulator kvinner – Jackson-Pollock | Prosentkalken">
+  <meta property="og:description" content="Beregn fettprosenten din som kvinne med Jackson-Pollock 3-punkts metode. Inkludert alderstabell og referanseverdier.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://prosentkalken.no/fettprosent-kvinner.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,7 +176,7 @@ footer ul a:hover { color:var(--accent); }
 
 <section class="hero">
   <h1>Fettprosent kalkulator – Kvinner</h1>
-  <p>Beregn fettprosenten din basert på kroppsomkrets. Bruker den militære metoden (US Navy) som er nøyaktig og enkel.</p>
+  <p>Beregn fettprosenten din med Jackson-Pollock 3-punkts metode. Nøyaktig og vitenskapelig validert – brukt av personlige trenere og idrettsmiljøer.</p>
 </section>
 <div class="top-banner-ad">
   <div class="ad-inner"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – 728×90</span></div>
@@ -185,78 +185,140 @@ footer ul a:hover { color:var(--accent); }
 <aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
 <main>
 <div class="calc-stack">
+
 <div class="calc-card">
   <div class="calc-card-header">
-    <h2>Fettprosent – Kvinner</h2>
-    <p>Mål i centimeter. Mål på morgenen etter toalettbesøk for mest nøyaktig resultat.</p>
+    <h2>Jackson-Pollock 3-punkt – Kvinner</h2>
+    <p>Mål hudfoldene med fettkaliper (fettklype) på tre punkter. Oppgi verdiene i millimeter.</p>
   </div>
   <div style="padding:24px">
     <div class="calc-grid">
     <div>
-      <div class="field"><label>Høyde (cm)</label>
-        <div class="input-wrap"><input type="number" id="k_hoyde" value="168" min="140" max="220" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
-      <div class="field"><label>Livvidde – navlenivå (cm)</label>
-        <div class="input-wrap"><input type="number" id="k_midje" value="75" min="50" max="150" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
-      <div class="field"><label>Hoftomkrets – bredeste punkt (cm)</label>
-        <div class="input-wrap"><input type="number" id="k_hofte" value="95" min="50" max="160" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
-      <div class="field"><label>Nakkeomkrets (cm)</label>
-        <div class="input-wrap"><input type="number" id="k_nakke" value="33" min="25" max="55" oninput="calcFettK()"><span class="input-unit">cm</span></div></div>
+      <div class="field"><label for="k_alder">Alder (år)</label>
+        <div class="input-wrap"><input type="number" id="k_alder" value="30" min="15" max="80" oninput="calcK()"><span class="input-unit">år</span></div></div>
+      <div class="field"><label for="k_triceps">Triceps (mm)</label>
+        <div class="input-wrap"><input type="number" id="k_triceps" value="14" min="1" max="60" oninput="calcK()"><span class="input-unit">mm</span></div>
+        <div style="font-size:12px;color:var(--text-s);margin-top:5px">Baksiden av overarmen, midt mellom skulder og albue</div></div>
+      <div class="field"><label for="k_supra">Suprailiac (mm)</label>
+        <div class="input-wrap"><input type="number" id="k_supra" value="16" min="1" max="60" oninput="calcK()"><span class="input-unit">mm</span></div>
+        <div style="font-size:12px;color:var(--text-s);margin-top:5px">Diagonal hudfold like over hoftekammen</div></div>
+      <div class="field"><label for="k_lar">Lår (mm)</label>
+        <div class="input-wrap"><input type="number" id="k_lar" value="20" min="1" max="60" oninput="calcK()"><span class="input-unit">mm</span></div>
+        <div style="font-size:12px;color:var(--text-s);margin-top:5px">Vertikal hudfold midt på forsiden av låret</div></div>
     </div>
     <div class="result-card">
       <div class="result-main">
         <div class="result-label">Fettprosent</div>
-        <div class="result-amount" id="k_fett_result">–</div>
-        <div class="result-sub" id="k_fett_kategori"></div>
+        <div class="result-amount" id="k_result">–</div>
+        <div class="result-sub">Jackson-Pollock formel</div>
       </div>
       <div class="result-rows">
-        <div class="result-row"><span class="r-label">Kategori</span><span class="r-val accent" id="k_fett_kat2">–</span></div>
-        <div class="result-row"><span class="r-label">Metode</span><span class="r-val">US Navy</span></div>
+        <div class="result-row"><span class="r-label">Kategori</span><span class="r-val accent" id="k_kat">–</span></div>
+        <div class="result-row"><span class="r-label">Sum hudfolder</span><span class="r-val" id="k_sum">–</span></div>
       </div>
       <div style="margin-top:20px;background:var(--bg);border-radius:var(--radius-s);padding:14px">
         <div style="font-size:11px;color:var(--text-s);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.8px">Referanseverdier kvinner</div>
         <div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
-          <div style="display:flex;justify-content:space-between"><span style="color:#60A5FA">Essensiell fett</span><span>10–13%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#34D399">Atletisk</span><span>14–20%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent)">God form</span><span>21–24%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#FBBF24">Akseptabel</span><span>25–31%</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="color:#EF4444">Høy fett</span><span>32%+</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#60A5FA">Essensielt fett</span><span>10–13 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#34D399">Atletisk</span><span>14–20 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent)">Fitness</span><span>21–24 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#FBBF24">Akseptabel</span><span>25–31 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#F97316">Overvekt</span><span>32–39 %</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:#EF4444">Fedme</span><span>40 %+</span></div>
         </div>
       </div>
     </div>
     </div>
   </div>
 </div>
+
 <div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+<div class="calc-card">
+  <div class="calc-card-header">
+    <h2>Slik tar du målingene</h2>
+    <p>Korrekt måleteknikk er avgjørende for nøyaktige resultater.</p>
+  </div>
+  <div style="padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:var(--bg);border-radius:var(--radius-s);padding:16px;border-left:3px solid var(--accent)">
+      <strong style="display:block;margin-bottom:6px">Triceps</strong>
+      <span style="font-size:13px;color:var(--text-m)">Baksiden av overarmen, midt mellom skuldertopp og albue. Ta en vertikal hudfold med armen hengende naturlig langs siden.</span>
+    </div>
+    <div style="background:var(--bg);border-radius:var(--radius-s);padding:16px;border-left:3px solid var(--accent)">
+      <strong style="display:block;margin-bottom:6px">Suprailiac</strong>
+      <span style="font-size:13px;color:var(--text-m)">Like over hoftekammen, på siden av kroppen. Ta en diagonal hudfold som følger kroppens naturlige fold fremover og nedover.</span>
+    </div>
+    <div style="background:var(--bg);border-radius:var(--radius-s);padding:16px;border-left:3px solid var(--accent)">
+      <strong style="display:block;margin-bottom:6px">Lår</strong>
+      <span style="font-size:13px;color:var(--text-m)">Midt på forsiden av låret, halvveis mellom hofteknopp og kneleddet. Ta en vertikal hudfold mens du sitter eller støtter vekten på den andre foten.</span>
+    </div>
+    <div class="info-box">
+      <h4>Tips for nøyaktighet</h4>
+      <p>Ta tre målinger på hvert punkt og bruk gjennomsnittet. Mål alltid på samme sted og til samme tid på dagen. Ikke mål rett etter trening – vent til kroppen er avkjølt og hvilt.</p>
+    </div>
+  </div>
+</div>
+
+<div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
 <div class="affiliate-section">
   <p class="annonse-label">Annonse</p>
-  <h3>Treningsutstyr og kosttilskudd</h3>
+  <h3>Kjøp fettkaliper</h3>
   <div class="affiliate-card">
-    <div class="affiliate-info"><strong>Gymgrossisten – Norges største treningsbutikk</strong><span>Alt du trenger for å nå treningsmålene dine</span><small>Stort utvalg av proteiner, vitaminer og treningsutstyr</small></div>
+    <div class="affiliate-info"><strong>Gymgrossisten – Fettkaliper og treningsutstyr</strong><span>Profesjonell fettkaliper for nøyaktige målinger hjemme</span><small>Stort utvalg av treningsutstyr og kosttilskudd</small></div>
     <a href="https://www.gymgrossisten.com" target="_blank" rel="noopener sponsored" class="affiliate-btn">Se tilbud <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
   </div>
 </div>
+
 </div>
 </main>
 <aside class="ad-sidebar" aria-label="Annonse"><div class="ad-box"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonse</span></div></aside>
 </div>
+
 <div class="content-wrap">
-  <h2>Slik måler du fettprosenten din</h2>
-  <p>US Navy-metoden bruker enkle omkretsmålinger og er dokumentert nøyaktig til ±3–4 prosentpoeng for de fleste. Mål alltid på morgenen, etter toalettbesøk og før du har spist eller drukket.</p>
-  <h2>Slik tar du målingene</h2>
+  <h2>Hva er normal fettprosent for kvinner?</h2>
+  <p>Normal fettprosent for kvinner er høyere enn for menn – dette er biologisk normalt og nødvendig for hormonproduksjon og reproduktiv helse. Kvinner trenger mer essensielt fett enn menn for å opprettholde grunnleggende kroppsfunksjoner.</p>
   <ul>
-    <li><strong>Høyde:</strong> Uten sko, stå rett opp</li>
-    <li><strong>Livvidde:</strong> Mål rundt navlen, pust normalt ut</li>
-    <li><strong>Hofte:</strong> Mål på det bredeste punktet rundt hoftene og rumpa</li>
-    <li><strong>Nakke:</strong> Mål rett under strupehodet, skrått nedover</li>
+    <li><strong>Essensielt fett (10–13%):</strong> Minimum nødvendig fett for hormonbalanse og kroppsfunksjoner. Under dette nivået kan menstruasjon stoppe og benhelse svekkes.</li>
+    <li><strong>Atletisk (14–20%):</strong> Typisk for kvinnelige idrettsutøvere og konkurranseutøvere.</li>
+    <li><strong>Fitness (21–24%):</strong> Godt trent med synlig muskeldefinisjon. Et realistisk mål for aktive kvinner.</li>
+    <li><strong>Akseptabel (25–31%):</strong> Normal, sunn fettprosent for kvinner med moderat aktivitet.</li>
+    <li><strong>Overvekt (32–39%):</strong> Forhøyet fettprosent som over tid kan øke risiko for livsstilssykdommer.</li>
+    <li><strong>Fedme (40%+):</strong> Betydelig helserisiko – bør adresseres med medisinsk veiledning.</li>
   </ul>
-  <div class="info-box"><h4>Tips for nøyaktighet</h4><p>Ta tre målinger og bruk gjennomsnittet. Bruk et mykt målebånd og hold det horisontalt. Ikke press det for stramt – det skal ligge mot huden uten å klemme.</p></div>
+
+  <div class="inline-ad"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Annonseplass – native innhold</span></div>
+
+  <h2>Fettprosent etter alder – kvinner</h2>
+  <p>Fettprosenten øker naturlig med alderen på grunn av hormonelle endringer, særlig rundt og etter overgangsalderen, samt gradvis tap av muskelmasse (sarkopeni). Her er normale verdier basert på alder:</p>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:14px">
+      <thead><tr style="background:var(--bg2)">
+        <th style="text-align:left;padding:12px 16px;color:var(--text-m);font-size:12px;text-transform:uppercase;letter-spacing:0.8px">Aldersgruppe</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--text-m);font-size:12px;text-transform:uppercase;letter-spacing:0.8px">Normal range</th>
+        <th style="text-align:center;padding:12px 16px;color:var(--text-m);font-size:12px;text-transform:uppercase;letter-spacing:0.8px">Atletisk</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:12px 16px">20–29 år</td><td style="text-align:center;padding:12px 16px">16–24 %</td><td style="text-align:center;padding:12px 16px;color:var(--accent)">14–20 %</td></tr>
+        <tr style="border-top:1px solid var(--border);background:var(--bg2)"><td style="padding:12px 16px">30–39 år</td><td style="text-align:center;padding:12px 16px">17–25 %</td><td style="text-align:center;padding:12px 16px;color:var(--accent)">15–21 %</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:12px 16px">40–49 år</td><td style="text-align:center;padding:12px 16px">19–28 %</td><td style="text-align:center;padding:12px 16px;color:var(--accent)">16–23 %</td></tr>
+        <tr style="border-top:1px solid var(--border);background:var(--bg2)"><td style="padding:12px 16px">50–59 år</td><td style="text-align:center;padding:12px 16px">22–31 %</td><td style="text-align:center;padding:12px 16px;color:var(--accent)">18–25 %</td></tr>
+        <tr style="border-top:1px solid var(--border)"><td style="padding:12px 16px">60+ år</td><td style="text-align:center;padding:12px 16px">24–33 %</td><td style="text-align:center;padding:12px 16px;color:var(--accent)">19–26 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Hvordan endre fettprosenten din</h2>
+  <p>For å redusere fettprosenten uten å miste muskelmasse bør du kombinere styrketrening med moderat kalorirestriksjon. Sørg for tilstrekkelig proteininntak – minimum 1,6 g per kg kroppsvekt per dag. Sikt på 0,5 kg vektnedgang per uke for å bevare muskler og hormonbalanse.</p>
+  <p>Se også: <a href="/fettprosent-menn.html" style="color:var(--accent)">Fettprosent kalkulator for menn →</a></p>
+
   <h2>Ofte stilte spørsmål</h2>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er sunn fettprosent for kvinner? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="faq-a">For kvinner regnes 21–24% som god form, 14–20% som atletisk. Essensiell fett for kvinner er 10–13% – under dette kan det påvirke hormonbalansen negativt.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Er US Navy-metoden nøyaktig? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="faq-a">US Navy-metoden er nøyaktig til ±3–4 prosentpoeng for de fleste. Den er ikke like presis som DEXA-scanning eller hydrostatisk veiing, men er et godt og gratis alternativ for hjemmebruk.</div></div>
-  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er forskjellen på fettprosent og BMI? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
-    <div class="faq-a">BMI måler kun forholdet mellom høyde og vekt, og skiller ikke mellom fett og muskelmasse. Fettprosent er mer presis og gir bedre bilde av kroppssammensetningen.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er suprailiac og hvorfor brukes det for kvinner? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Suprailiac er hoftekammen – det benete fremspringet på siden av hoftene. For kvinner lagres mye fett i dette området, noe som gjør det til et nøkkelpunkt i JP-formelen. For menn brukes mage i stedet, der menn typisk lagrer mer fett.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Er det farlig å ha for lav fettprosent? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Ja – for kvinner kan fettprosent under 10–13% føre til hormonelle forstyrrelser, bortfall av menstruasjon (amenoré), redusert benmasse og nedsatt immunforsvar. Kroppen trenger essensielt fett for å produsere hormoner som østrogen og progesteron.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Hva er Jackson-Pollock-formelen? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;transition:transform 200ms"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="faq-a">Jackson-Pollock er en vitenskapelig validert formel som beregner kroppstetthet ut fra summen av tre hudfoldmålinger og alder. Tettheten konverteres deretter til fettprosent via Siri-formelen (fettprosent = 495/tetthet − 450). Metoden er nøyaktig til ±3–4 prosentpoeng.</div></div>
 </div>
 <footer>
   <div class="footer-inner">
@@ -295,25 +357,30 @@ function toggleFaq(el) {
 </script>
 </body>
 </html><script>
-function calcFettK() {
-  const h = parseFloat(document.getElementById('k_hoyde').value) || 0;
-  const m = parseFloat(document.getElementById('k_midje').value) || 0;
-  const ho = parseFloat(document.getElementById('k_hofte').value) || 0;
-  const n = parseFloat(document.getElementById('k_nakke').value) || 0;
-  if (!h || !m || !ho || !n || (m + ho - n) <= 0) return;
-  const fett = 163.205 * Math.log10(m + ho - n) - 97.684 * Math.log10(h) - 78.387;
-  const r = document.getElementById('k_fett_result');
-  const k = document.getElementById('k_fett_kat2');
+function calcK() {
+  const alder   = parseFloat(document.getElementById('k_alder').value)   || 0;
+  const triceps = parseFloat(document.getElementById('k_triceps').value) || 0;
+  const supra   = parseFloat(document.getElementById('k_supra').value)   || 0;
+  const lar     = parseFloat(document.getElementById('k_lar').value)     || 0;
+  if (!alder || !triceps || !supra || !lar) return;
+  const sum = triceps + supra + lar;
+  const tetthet = 1.0994921 - (0.0009929 * sum) + (0.0000023 * sum * sum) - (0.0001392 * alder);
+  const fett = (495 / tetthet) - 450;
+  const r = document.getElementById('k_result');
+  const k = document.getElementById('k_kat');
+  const s = document.getElementById('k_sum');
   r.textContent = Math.round(fett * 10) / 10 + ' %';
+  s.textContent = sum + ' mm';
   let kat = '', color = 'var(--accent)';
-  if (fett < 14) { kat = 'Essensiell / Atletisk'; color = '#60A5FA'; }
-  else if (fett < 21) { kat = 'Atletisk'; color = '#34D399'; }
-  else if (fett < 25) { kat = 'God form'; color = 'var(--accent)'; }
-  else if (fett < 32) { kat = 'Akseptabel'; color = '#FBBF24'; }
-  else { kat = 'Høy fettprosent'; color = '#EF4444'; }
+  if (fett < 14)      { kat = 'Essensielt fett'; color = '#60A5FA'; }
+  else if (fett < 21) { kat = 'Atletisk';        color = '#34D399'; }
+  else if (fett < 25) { kat = 'Fitness';         color = 'var(--accent)'; }
+  else if (fett < 32) { kat = 'Akseptabel';      color = '#FBBF24'; }
+  else if (fett < 40) { kat = 'Overvekt';        color = '#F97316'; }
+  else                { kat = 'Fedme';           color = '#EF4444'; }
   k.textContent = kat;
   k.style.color = color;
   r.style.color = color;
 }
-calcFettK();
+calcK();
 </script></body></html>
