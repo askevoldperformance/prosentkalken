@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/fettprosent-kvinner", "destination": "/fettprosent-kvinner.html" },
+    { "source": "/fettprosent-menn", "destination": "/fettprosent-menn.html" },
+    { "source": "/tollkalkulator", "destination": "/tollkalkulator.html" },
+    { "source": "/guider", "destination": "/guider.html" },
+    { "source": "/guider/hvordan-regne-ut-prosent", "destination": "/guider/hvordan-regne-ut-prosent.html" },
+    { "source": "/guider/fettprosent", "destination": "/guider/fettprosent.html" },
+    { "source": "/guider/toll-moms-utlandet", "destination": "/guider/toll-moms-utlandet.html" },
+    { "source": "/personvern", "destination": "/personvern.html" }
+  ]
+}
