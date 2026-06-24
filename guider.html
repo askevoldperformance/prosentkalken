@@ -26,8 +26,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --bg:#120f2f; --bg2:#252260; --bg3:#2D2975;
-  --card:#262350; --card2:#2E2A6A;
+  --bg:#121C2D; --bg2:#1A2640; --bg3:#1F3550;
+  --card:#1E2D44; --card2:#243352;
   --accent:#F59E0B; --accent-h:#D97706; --accent-s:rgba(245,158,11,0.15);
   --text:#F0F4FA; --text-m:#94A3B8; --text-s:#64748B;
   --border:rgba(255,255,255,0.08); --border-a:rgba(245,158,11,0.4);
@@ -36,7 +36,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 html { scroll-behavior:smooth; }
 body { font-family:'IBM Plex Sans',system-ui,sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.6; min-height:100vh; }
 
-nav { position:sticky; top:0; z-index:50; background:rgba(18,15,47,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 24px; }
+nav { position:sticky; top:0; z-index:50; background:rgba(18,28,45,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 24px; }
 .nav-inner { max-width:1400px; margin:0 auto; display:flex; align-items:center; gap:24px; height:64px; }
 .logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
 .logo-icon { width:32px; height:32px; background:var(--accent); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:900; color:#1E1B4B; }
@@ -51,7 +51,7 @@ nav { position:sticky; top:0; z-index:50; background:rgba(18,15,47,0.95); backdr
 .top-banner-ad { background:var(--bg2); border-bottom:1px solid var(--border); padding:8px 24px; display:flex; align-items:center; justify-content:center; }
 .top-banner-ad .ad-inner { max-width:728px; width:100%; height:90px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius-s); display:flex; align-items:center; justify-content:center; gap:8px; color:var(--text-s); font-size:11px; }
 
-.hero { background:linear-gradient(135deg,#120f2f 0%,#1a1650 50%,#0e0c28 100%); padding:48px 24px 32px; text-align:center; position:relative; overflow:hidden; }
+.hero { background:linear-gradient(135deg,#121C2D 0%,#1A2640 50%,#0D1F35 100%); padding:48px 24px 32px; text-align:center; position:relative; overflow:hidden; }
 .hero::before { content:''; position:absolute; top:-80px; right:-80px; width:400px; height:400px; background:radial-gradient(circle,rgba(245,158,11,0.1) 0%,transparent 70%); pointer-events:none; }
 .hero h1 { font-size:clamp(22px,4vw,38px); font-weight:700; line-height:1.2; margin-bottom:10px; letter-spacing:-0.5px; }
 .hero p { color:var(--text-m); font-size:15px; max-width:520px; margin:0 auto; }
@@ -187,19 +187,52 @@ footer ul a:hover { color:var(--accent); }
   <h1>Guider og artikler</h1>
   <p>Grundige forklaringer på prosentregning, fettprosent, toll og mer – med internlenker til kalkulatorene.</p>
 </section>
+<div class="main-wrap">
+<main>
 <div class="content-wrap">
   <div class="guide-grid">
-    <a href="/guider/hvordan-regne-ut-prosent" class="guide-card"><h3>Hvordan regne ut prosent</h3><p>Formler, eksempler og vanlige feil. Alt du trenger for å mestre prosentregning.</p><span class="arrow">Les guide →</span></a>
-    <a href="/guider/fettprosent" class="guide-card"><h3>Fettprosent – komplett guide</h3><p>Målemetoder, normale verdier for menn og kvinner, og tips for å nå målet.</p><span class="arrow">Les guide →</span></a>
-    <a href="/guider/toll-moms-utlandet" class="guide-card"><h3>Toll og moms fra utlandet</h3><p>Tollfrigrense, tollsatser og hva det faktisk koster å handle fra Kina og USA.</p><span class="arrow">Les guide →</span></a>
+    <a href="/guider/hvordan-regne-ut-prosent" class="guide-card">
+      <h3>Hvordan regne ut prosent</h3>
+      <p>Formler, eksempler og vanlige feil. Alt du trenger for å mestre prosentregning.</p>
+      <span class="arrow">Les guide →</span>
+    </a>
+    <a href="/guider/fettprosent" class="guide-card">
+      <h3>Fettprosent – komplett guide</h3>
+      <p>Målemetoder, normale verdier for menn og kvinner, og tips for å nå målet.</p>
+      <span class="arrow">Les guide →</span>
+    </a>
+    <a href="/guider/toll-moms-utlandet" class="guide-card">
+      <h3>Toll og moms fra utlandet</h3>
+      <p>Tollfrigrense, tollsatser og hva det faktisk koster å handle fra Kina og USA.</p>
+      <span class="arrow">Les guide →</span>
+    </a>
   </div>
   <h2>Bruk kalkulatorene</h2>
+  <p>Guidene forteller deg hva du bør vite. Kalkulatorene viser deg konkret hva det koster. Bruk dem sammen.</p>
   <div class="guide-grid" style="margin-top:16px">
-    <a href="/" class="guide-card"><h3>Prosentkalkulator</h3><p>Beregn prosent, prosentandel, økning og nedgang.</p><span class="arrow">Åpne →</span></a>
-    <a href="/fettprosent-menn" class="guide-card"><h3>Fettprosent menn</h3><p>Jackson-Pollock kaliper-metoden.</p><span class="arrow">Åpne →</span></a>
-    <a href="/fettprosent-kvinner" class="guide-card"><h3>Fettprosent kvinner</h3><p>Jackson-Pollock kaliper-metoden.</p><span class="arrow">Åpne →</span></a>
-    <a href="/tollkalkulator" class="guide-card"><h3>Tollkalkulator</h3><p>Beregn toll og moms fra utlandet.</p><span class="arrow">Åpne →</span></a>
+    <a href="/" class="guide-card">
+      <h3>Prosentkalkulator</h3>
+      <p>Beregn prosent, prosentandel, økning og nedgang. Med formler og eksempler.</p>
+      <span class="arrow">Åpne →</span>
+    </a>
+    <a href="/fettprosent-menn" class="guide-card">
+      <h3>Fettprosent menn</h3>
+      <p>Jackson-Pollock kaliper-metoden med referanseverdier.</p>
+      <span class="arrow">Åpne →</span>
+    </a>
+    <a href="/fettprosent-kvinner" class="guide-card">
+      <h3>Fettprosent kvinner</h3>
+      <p>Jackson-Pollock kaliper-metoden med alderstabell.</p>
+      <span class="arrow">Åpne →</span>
+    </a>
+    <a href="/tollkalkulator" class="guide-card">
+      <h3>Tollkalkulator</h3>
+      <p>Beregn toll og moms fra utlandet. Oppdatert med tollfrigrense 2026.</p>
+      <span class="arrow">Åpne →</span>
+    </a>
   </div>
+</div>
+</main>
 </div>
 <footer>
   <div class="footer-inner">
